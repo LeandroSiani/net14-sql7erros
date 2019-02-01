@@ -15,7 +15,8 @@ namespace MeuTrabalho.Controllers
 
         public HomeController()
         {
-            this.connection = new SqlConnection("Server=saturnoserver.database.windows.net;Database=MEUDB;User=app;Password=homework-jan31;Max Pool Size=10");
+            this.connection = new SqlConnection("Server=localhost;Database=MEUDB;Integrated Security=SSPI;");
+            
         }
 
         public IActionResult Index()
@@ -59,6 +60,7 @@ namespace MeuTrabalho.Controllers
 
             try
             {
+                this.connection.Open();
                 SqlConnection conn1 = this.connection;
 
                 SqlCommand sql = new SqlCommand("INSERT tbLog VALUES ('contact')");
